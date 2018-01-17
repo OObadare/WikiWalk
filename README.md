@@ -1,7 +1,7 @@
 # WikiWalk
 
 ### Overview
-A data visualization project that lets you “crawl” through Wikipedia by clicking on links that appear in bubbles. 
+A data visualization project that lets you “crawl” through Wikipedia by clicking on links that appear in bubbles and branch out to more bubbles. This would make a web of articles as the user clicks the bubbles, allowing them to see how interconnected Wikipedia is. 
 
 ### MVPs
 * User should be able to query Wikipedia for a starting point.
