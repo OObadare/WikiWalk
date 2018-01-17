@@ -40,4 +40,4 @@ The main component will be bubbles, which contain an image of the page header. C
 ### Bonus
 
 Clicking on the first link in the main text of a Wikipedia article, and then repeating the process for subsequent articles, would usually lead to the Philosophy article. As of February 2016, 97% of all articles in Wikipedia eventually led to the article Philosophy.
-I would like to include a button that automatically walks the user through the process.
+I would like to include a button that automatically walks the user through the process from the currently selected article - automatically opening the bubbles until it gets to Philosophy (if possible) and alerting the user if it hits a loop, e.g. two articles that refer immediately back to each other.
