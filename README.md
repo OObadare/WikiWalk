@@ -36,3 +36,8 @@ The main component will be bubbles, which contain an image of the page header. C
 * Thursday: Devote the day to learning D3. Work on bubbles.
 * Friday: Finish Bubbles, bubble links. Figure out the script that I need to determine which bubbles to show. 
 * Weekend: Style, About columns/modals. 
+
+### Bonus
+
+Clicking on the first link in the main text of a Wikipedia article, and then repeating the process for subsequent articles, would usually lead to the Philosophy article. As of February 2016, 97% of all articles in Wikipedia eventually led to the article Philosophy.
+I would like to include a button that automatically walks the user through the process.
