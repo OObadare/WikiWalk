@@ -8,7 +8,7 @@ A data visualization project that lets you “crawl” through Wikipedia by clic
 
 * Bubbles of varying size corresponding to how many people have visited their respective pages on Wikipedia. 
 
-* New bubbles leading to different pages should open on click of a previous bubble.. The screen should zoom and focus to accommodate said bubbling. 
+* New bubbles leading to different pages should open on click of a previous bubble. The screen should zoom and focus to accommodate said bubbling. 
 
 ### Wireframes
 
@@ -22,7 +22,7 @@ The main component will be bubbles, which contain an image of the page header. C
 
 * D3
 
-* MediaWiki’s API; for some reason Wikipedia doesn’t havee its own
+* MediaWiki’s API; for some reason Wikipedia doesn’t have its own
 
 * In addition to the landing page, I will also need a script for creating bubbles - they will be circular bubbles with the title of the page and maybe the primary picture, if there is one. 
 
@@ -34,5 +34,5 @@ The main component will be bubbles, which contain an image of the page header. C
 
 * Wednesday: Learn about D3, create entry file, setup webpack and more detailed schema/architecture. Figure out the wikipedia API. Complete landing page and search bar.
 * Thursday: Devote the day to learning D3. Work on bubbles.
-* Friday: Finish Bubbles, bubble links. 
-* Weekend: Style, finish everything I hadn't done before. 
+* Friday: Finish Bubbles, bubble links. Figure out the script that I need to determine which bubbles to show. 
+* Weekend: Style, About columns/modals. 
