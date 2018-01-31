@@ -1,10 +1,23 @@
 //sets up the initial search
 document.addEventListener("DOMContentLoaded", function(){
   document.getElementById('search').addEventListener("submit", (e) => {
-    debugger
-    //dSearch is the desired search term
+    e.preventDefault();
     const dSearch = e.currentTarget[0].value;
-    console.log(e.currentTarget[0].value);
+    //this ajax request gets the intro paragraph for the searched article
+    $.ajax({
+      type: "GET",
+      url: `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=${dSearch}&callback=?`,
+      contentType: "application/json; charset=utf-8",
+      // async: false,
+      dataType: "json",
+      success: function (data) {
+        displayArticle(data);
+      },
+      error: function (errorMessage) {
+      }
+    });
+    //dSearch is the desired search term
+    const sectionUrl = makeSectionUrl(dSearch);
   });
 
 });
@@ -18,7 +31,6 @@ var simulation = d3.forceSimulation()
 .force("charge", d3.forceManyBody())
 .force("center", d3.forceCenter(width / 2, height / 2));
 
-  var url = "https://en.wikipedia.org/w/api.php?action=query&titles=San_Francisco&prop=images&imlimit=20&format=json"
   d3.json("miserables.json", function(error, graph) {
   if (error) throw error;
 
