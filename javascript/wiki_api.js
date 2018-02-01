@@ -11,3 +11,18 @@ function makePageViewUrl(dSearch, startDate, endDate){
 function makeCategoryUrl(dSearch){
   `https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:${dSearch}`
 }
+
+function getArticleIntro(searchTerm) {
+  $.ajax({
+    type: "GET",
+    url: `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=${searchTerm}&callback=?`,
+    contentType: "application/json; charset=utf-8",
+    // async: false,
+    dataType: "json",
+    success: function (data) {
+      displayArticle(data);
+    },
+    error: function (errorMessage) {
+    }
+  });
+}

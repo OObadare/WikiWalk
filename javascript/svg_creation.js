@@ -4,89 +4,30 @@ document.addEventListener("DOMContentLoaded", function(){
     e.preventDefault();
     const dSearch = e.currentTarget[0].value;
     //this ajax request gets the intro paragraph for the searched article
-    $.ajax({
-      type: "GET",
-      url: `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=${dSearch}&callback=?`,
-      contentType: "application/json; charset=utf-8",
-      // async: false,
-      dataType: "json",
-      success: function (data) {
-        displayArticle(data);
-      },
-      error: function (errorMessage) {
-      }
-    });
-    //dSearch is the desired search term
-    const sectionUrl = makeSectionUrl(dSearch);
+    getArticleIntro(dSearch);
   });
 
 });
 
+//sets the svg in js, assigns it width and height
 var svg = d3.select("svg"),
-width = +svg.attr("width"),
-height = +svg.attr("height");
+  margin = {top: 20, right: 20, bottom: 30, left: 50},
+  width = +svg.attr("width") - margin.left - margin.right,
+  height = +svg.attr("height") - margin.top - margin.bottom,
+  g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var simulation = d3.forceSimulation()
-.force("link", d3.forceLink().id(function(d) { return d.id; }))
-.force("charge", d3.forceManyBody())
-.force("center", d3.forceCenter(width / 2, height / 2));
+//assigns axes
+var x = d3.scaleTime()
+  .rangeRound([0, width]);
 
-  d3.json("miserables.json", function(error, graph) {
-  if (error) throw error;
+var y = d3.scaleLinear()
+  .rangeRound([height, 0]);
 
-  var link = svg.append("g")
-    .attr("class", "links")
-    .selectAll("line")
-    .data(graph.links)
-    .enter().append("line");
+//gets the dates I'm going to use to get the page views
+var formatDate = d3.timeFormat("%Y%m%d");
+const currDate = formatDate(new Date());
+const pastDate = formatDate((new Date(new Date().setFullYear(new Date().getFullYear() - 1))));
 
-  var node = svg.append("g")
-    .attr("class", "nodes")
-    .selectAll("circle")
-    .data(graph.nodes)
-    .enter().append("circle")
-    .attr("r", 2.5)
-    .call(d3.drag()
-        .on("start", dragstarted)
-        .on("drag", dragged)
-        .on("end", dragended));
 
-  node.append("title")
-    .text(function(d) { return d.id; });
 
-  simulation
-    .nodes(graph.nodes)
-    .on("tick", ticked);
-
-  simulation.force("link")
-    .links(graph.links);
-
-  function ticked() {
-    link
-      .attr("x1", function(d) { return d.source.x; })
-      .attr("y1", function(d) { return d.source.y; })
-      .attr("x2", function(d) { return d.target.x; })
-      .attr("y2", function(d) { return d.target.y; });
-
-    node
-      .attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; });
-  }
-});
-
-function dragstarted(d) {
-  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-  d.fx = d.x;
-  d.fy = d.y;
-}
-
-function dragged(d) {
-  d.fx = d3.event.x;
-  d.fy = d3.event.y;
-}
-
-function dragended(d) {
-  if (!d3.event.active) simulation.alphaTarget(0);
-  d.fx = null;
-  d.fy = null;
-}
+//everything below this used to be the force map
