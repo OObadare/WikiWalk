@@ -1,3 +1,5 @@
+/* jshint browser: true */
+
 function displayArticle(result) {
   let pageKey = Object.keys(result.query.pages)[0];
   document.getElementById('searchedTitle').innerHTML = result.query.pages[pageKey].title;
@@ -5,4 +7,36 @@ function displayArticle(result) {
   document.getElementById('searchedLink').href = "";
   let wikiLeak = `https://en.wikipedia.org/wiki/${result.query.pages[pageKey].title}`;
   document.getElementById('searchedLink').href = wikiLeak;
+}
+
+function handleViews(result) {
+  const data = result;
+  // if (error) {throw error;}
+
+  data.forEach(function(point){
+    data.date = point.timestamp;
+    data.viewCount = +point.views;
+  });
+
+
+  x.domain(d3.extent(data, function(d) { return d.timestamp; }));
+  y.domain([0, d3.max(data, function(d) { return d.views; })]);
+
+  var valueline = d3.line()
+      .x(function(d) { return x(d.timestamp); })
+      .y(function(d) { return y(d.views); });
+
+  svg.append("path")
+      .data([data])
+      .attr("class", "line")
+      .attr("d", valueline);
+
+  // Add the X Axis
+  svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // Add the Y Axis
+  svg.append("g")
+      .call(d3.axisLeft(y));
 }
