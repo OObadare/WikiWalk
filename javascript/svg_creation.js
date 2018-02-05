@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const dSearch = e.currentTarget[0].value;
     //this ajax request gets the intro paragraph for the searched article
     getArticleIntro(dSearch);
+    getArticleViews(dSearch, pastDate, currDate);
   });
 
 });
@@ -27,6 +28,7 @@ var y = d3.scaleLinear()
 var formatDate = d3.timeFormat("%Y%m%d");
 const currDate = formatDate(new Date());
 const pastDate = formatDate((new Date(new Date().setFullYear(new Date().getFullYear() - 1))));
+
 
 
 

@@ -1,5 +1,4 @@
 function displayArticle(result) {
-  debugger
   let pageKey = Object.keys(result.query.pages)[0];
   document.getElementById('searchedTitle').innerHTML = result.query.pages[pageKey].title;
   document.getElementById('searchedIntro').innerHTML = result.query.pages[pageKey].extract || "";

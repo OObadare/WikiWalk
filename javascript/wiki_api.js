@@ -26,3 +26,18 @@ function getArticleIntro(searchTerm) {
     }
   });
 }
+
+function getArticleViews(dSearch, startDate, endDate) {
+  $.ajax({
+    type: "GET",
+    url: `https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/${dSearch}/daily/${startDate}/${endDate}`,
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+    },
+    error: function (errorMessage) {
+      console.log(errorMessage);
+    }
+  });
+}
