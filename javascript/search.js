@@ -14,16 +14,17 @@ function handleViews(result) {
   // if (error) {throw error;}
 
   data.forEach(function(point){
-    data.date = point.timestamp;
-    data.viewCount = +point.views;
+    point.date = formatTimeStampforChart(point.timestamp);
+    point.viewCount = +point.views;
   });
 
 
-  x.domain(d3.extent(data, function(d) { return d.timestamp; }));
+  x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain([0, d3.max(data, function(d) { return d.views; })]);
+  debugger
 
   var valueline = d3.line()
-      .x(function(d) { return x(d.timestamp); })
+      .x(function(d) { return x(d.date); })
       .y(function(d) { return y(d.views); });
 
   svg.append("path")

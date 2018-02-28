@@ -30,8 +30,6 @@ var y = d3.scaleLinear().range([height, 0]);
 //     .x(function(d) { return x(d.date); })
 //     .y(function(d) { return y(d.viewCount); });
 
-debugger
-
 // append the svg obgect to the body of the page
 // appends a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
@@ -43,6 +41,6 @@ var svg = d3.select("body").append("svg")
           "translate(" + margin.left + "," + margin.top + ")");
 //gets the dates I'm going to use to get the page views
 var formatDateforUrl = d3.timeFormat("%Y%m%d");
-var formatTimeStampforChart = d3.timeParse("%Y%m%d");
+var formatTimeStampforChart = d3.timeParse("%Y%m%d00");
 const currDate = formatDateforUrl(new Date());
 const pastDate = formatDateforUrl((new Date(new Date().setFullYear(new Date().getFullYear() - 1))));
