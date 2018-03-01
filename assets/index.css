@@ -1,23 +1,9 @@
+html {
+  background-color: #222629 ;
+}
+
 #title {
-  color: steelblue;
-}
-
-.bar {
-  fill: steelblue;
-}
-
-svg {
-  margin-top: 20px;
-  margin-right: 20px;
-  margin-bottom: 30px;
-  margin-left: 40px;
-}
-
-.link {
-  stroke: #ccc;
-}
-
-.node text {
-  pointer-events: none;
-  font: sans-serif;
+  font-size: 20px;
+  font-weight: 400px;
+  color: #190061;
 }

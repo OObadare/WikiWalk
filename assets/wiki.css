@@ -1,0 +1,56 @@
+/* very deep purple: #0C0032
+Slightly less deep purple: #190061
+slightly-er less deep purple: #240090
+pretty light purple I guess: #3500D3
+boring-ass-grey: #282828 */
+
+.line{
+  fill: none;
+  stroke: #190061;
+  stroke-width: 2px;
+}
+.nodes circle {
+  pointer-events: all;
+  stroke: none;
+  stroke-width: 40px;
+}
+
+#searchedTitle {
+  font-size: 20px;
+  color: white;
+}
+
+#searchedIntro {
+  background-color: #282828;
+  color: slategrey;
+  border: 1px solid #0C0032;
+  border-radius: 20px;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+svg {
+  margin-top: 20px;
+  /* margin-right: 20px; */
+  margin-bottom: 30px;
+  /* margin-left: 40px; */
+  background-color: #282828;
+  border: 1px solid #0C0032;
+  border-radius: 20px;
+}
+
+svg text {
+  fill: white;
+}
+
+.link {
+  stroke: #ccc;
+}
+
+/* .node text {
+  color: white;
+  pointer-events: none;
+  font: sans-serif;
+} */

@@ -21,7 +21,6 @@ function handleViews(result) {
 
   x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain([0, d3.max(data, function(d) { return d.views; })]);
-  debugger
 
   var valueline = d3.line()
       .x(function(d) { return x(d.date); })
