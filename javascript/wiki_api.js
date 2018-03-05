@@ -7,6 +7,12 @@ function makePageViewUrl(dSearch, startDate, endDate){
   return `https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/${dSearch}/daily/${startDate}/${endDate}`;
 }
 
+//get wikitext
+function getPageWikitext(dSearch) {
+  `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${dSearch}`
+};
+//probably going to have to just parse the above using regular expressions - 
+
 //get the titles in category
 function makeCategoryUrl(dSearch){
   `https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:${dSearch}`
