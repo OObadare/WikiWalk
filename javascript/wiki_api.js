@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 function makeSectionUrl(dSearch) {
   return `https://en.wikipedia.org/w/api.php?action=parse&format=json&redirects=1&prop=sections&page=${dSearch}`;
 }
@@ -9,13 +11,13 @@ function makePageViewUrl(dSearch, startDate, endDate){
 
 //get wikitext
 function getPageWikitext(dSearch) {
-  `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${dSearch}`
-};
-//probably going to have to just parse the above using regular expressions - 
+  return `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${dSearch}`;
+}
+//probably going to have to just parse the above using regular expressions -
 
 //get the titles in category
 function makeCategoryUrl(dSearch){
-  `https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:${dSearch}`
+  return `https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:${dSearch}`;
 }
 
 function getArticleIntro(searchTerm) {
@@ -33,6 +35,21 @@ function getArticleIntro(searchTerm) {
   });
 }
 
+function getArticleWikitext(searchTerm) {
+  $.ajax({
+    type: "GET",
+    url: `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${searchTerm}&callback=?`,
+    contentType: "application/json; charset=utf-8",
+    // async: false,
+    dataType: "json",
+    success: function (data) {
+      displayWikitext(data);
+    },
+    error: function (errorMessage) {
+    }
+  });
+}
+
 function getArticleViews(dSearch, startDate, endDate) {
   $.ajax({
     type: "GET",
@@ -40,7 +57,7 @@ function getArticleViews(dSearch, startDate, endDate) {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (result) {
-      handleViews(result.items)
+      handleViews(result.items);
     },
     error: function (errorMessage) {
       console.log(errorMessage);

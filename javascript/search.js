@@ -1,4 +1,5 @@
 /* jshint browser: true */
+/*jshint esversion: 6 */
 
 function displayArticle(result) {
   let pageKey = Object.keys(result.query.pages)[0];
@@ -7,6 +8,14 @@ function displayArticle(result) {
   document.getElementById('searchedLink').href = "";
   let wikiLeak = `https://en.wikipedia.org/wiki/${result.query.pages[pageKey].title}`;
   document.getElementById('searchedLink').href = wikiLeak;
+}
+
+function displayWikitext(result) {
+  let returned = result.parse.wikitext;
+  let keys = Object.keys(returned);
+  let text = returned[keys[0]];
+  debugger
+  document.getElementbyId('searchedWikitext').innerHTML = text;
 }
 
 function handleViews(result) {

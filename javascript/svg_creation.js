@@ -1,4 +1,5 @@
 /* jshint browser: true */
+/*jshint esversion: 6 */
 //sets up the initial search
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -7,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const dSearch = e.currentTarget[0].value;
     //this ajax request gets the intro paragraph for the searched article
     getArticleIntro(dSearch);
+    getArticleWikitext(dSearch);
     const views = getArticleViews(dSearch, pastDate, currDate);
   });
 
