@@ -14,6 +14,9 @@ function getPageWikitext(dSearch) {
   return `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${dSearch}`;
 }
 //probably going to have to just parse the above using regular expressions -
+//match anything thats NOT in curly braces, after the bolded wikitesxt ('''), in the square brackets for links
+//matches anything not in brackets and after the bolded character: /'''.*(?![^{]*})/mg
+//matches everything between two brackets: /\{\{([^]*)\}\}/g
 
 //get the titles in category
 function makeCategoryUrl(dSearch){

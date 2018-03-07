@@ -11,11 +11,28 @@ function displayArticle(result) {
 }
 
 function displayWikitext(result) {
-  let returned = result.parse.wikitext;
-  let keys = Object.keys(returned);
-  let text = returned[keys[0]];
+  const returned = result.parse.wikitext;
+  const keys = Object.keys(returned);
+  var text = returned[keys[0]];
+  //deBracket searches for everything inside curly braces, which removes the weird content boxes
+  const deBracket = /'''.*(?![^{]*})/mg;
+  //linkSearch gets what's in the square brackets, which are
+  const linkSearch = /(\[\[(.*?)\]\])/;
+  if (text[0] === "{") {
+    //exec returns the result of the regex match, this removes the "category" box of some wikipedia articles
+    text = deBracket.exec(text);
+  }
+  //another regex search that returns the contents of the first link in the second index
+  const links = linkSearch.exec(text);
+  let plainText = links[2];
+  if (plainText.indexOf("|") !== -1) {
+    plainText = plainText.slice(0, plainText.indexOf("|"));
+  }
+  if (plainText.indexOf("#") !== -1) {
+    plainText = plainText.slice(0, plainText.indexOf("#"));
+  }
   debugger
-  document.getElementbyId('searchedWikitext').innerHTML = text;
+  document.getElementById('searchedWikitext').innerHTML = plainText;
 }
 
 function handleViews(result) {
