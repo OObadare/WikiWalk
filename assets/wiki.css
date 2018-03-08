@@ -27,6 +27,11 @@ boring-ass-grey: #282828 */
   border-radius: 20px;
 }
 
+#searchedWikitext {
+  color: slategrey;
+  font-size: 20px;
+}
+
 .bar {
   fill: steelblue;
 }
