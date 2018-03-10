@@ -1,6 +1,7 @@
 /* jshint browser: true */
 /*jshint esversion: 6 */
 
+
 document.addEventListener("DOMContentLoaded", function(){
   document.getElementById('search').addEventListener("submit", (e) => {
     e.preventDefault();
@@ -11,12 +12,22 @@ document.addEventListener("DOMContentLoaded", function(){
     const views = getArticleViews(dSearch, pastDate, currDate);
   });
 
-  document.getElementById('searchedWikitext').addEventListener("click", function(){
-    getArticleWikitext(document.getElementById('searchedWikitext').innerHTML);
+  document.getElementById('Wikiwalker').addEventListener("click", function(){
+    var count = 0;
+    debugger
+    while (count < 5) {
+      getArticleWikitext(document.getElementById('searchedWikitext').innerHTML);
+      count ++;
+    }
   });
 
+  // if ((parsedList.length === 0) && (document.getElementById('searchedWikitext').innerHTML !== ""))  {
+  //   debugger
+  //   // getArticleWikitext(document.getElementById('searchedWikitext').innerHTML);
+  // }
 });
 
+var parsedList = [];
 
 function displayArticle(result) {
   let pageKey = Object.keys(result.query.pages)[0];
@@ -32,8 +43,8 @@ function displayWikitext(result) {
   const keys = Object.keys(returned);
   var text = returned[keys[0]];
   const deBracket = /'''.*(?![^{]*})/mg; //searches for everything outside* curly braces *except some things for some reason
-  const linkSearch = /(\[\[(.*?)\]\])/; //searches for everything inside brackets
   const deParenthesize = /\([^)]*\)/mg; //looks for parentheses and (ideally) removes them all
+  const linkSearch = /(\[\[(.*?)\]\])/; //searches for everything inside brackets
 
   if (text[0] === "{") {
     //exec returns the result of the regex match, this removes the "category" box of some wikipedia articles
@@ -44,7 +55,6 @@ function displayWikitext(result) {
   if (parens !== null) {
     text[0] = text[0].replace(parens[0], "");
   }
-  debugger
   //another regex search that returns the contents of the first link in the second index
   const links = linkSearch.exec(text);
   let plainText = links[2];
@@ -56,6 +66,8 @@ function displayWikitext(result) {
   }
 
   document.getElementById('searchedWikitext').innerHTML = plainText;
+  parsedList.push(plainText);
+  debugger
 }
 
 function handleViews(result) {
