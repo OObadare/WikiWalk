@@ -14,10 +14,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
   document.getElementById('Wikiwalker').addEventListener("click", function(){
     var count = 0;
-    debugger
     while (count < 5) {
       getArticleWikitext(document.getElementById('searchedWikitext').innerHTML);
       count ++;
+      // parsedList.push(document.getElementById('searchedWikitext').innerHTML);
+      debugger
     }
   });
 
@@ -66,8 +67,8 @@ function displayWikitext(result) {
   }
 
   document.getElementById('searchedWikitext').innerHTML = plainText;
-  parsedList.push(plainText);
   debugger
+  parsedList.push(plainText);
 }
 
 function handleViews(result) {
