@@ -32,6 +32,11 @@ boring-ass-grey: #282828 */
   font-size: 20px;
 }
 
+#Wikiwalker{
+  color: slategrey;
+  font-size: 20px;
+}
+
 .bar {
   fill: steelblue;
 }
