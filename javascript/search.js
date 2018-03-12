@@ -13,12 +13,13 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
   document.getElementById('Wikiwalker').addEventListener("click", function(){
-    var count = 0;
-    while (count < 5) {
-      getArticleWikitext(document.getElementById('searchedWikitext').innerHTML);
-      count ++;
-      // parsedList.push(document.getElementById('searchedWikitext').innerHTML);
+    const firstLink = document.getElementById('searchedWikitext').innerHTML;
+    var linkList = [firstLink];
+    while (linkList.length < 5) {
+      var next = getArticleWikitext(linkList[linkList.length -1]);
       debugger
+      linkList.push(next);
+      // parsedList.push(document.getElementById('searchedWikitext').innerHTML);
     }
   });
 
@@ -69,6 +70,7 @@ function displayWikitext(result) {
   document.getElementById('searchedWikitext').innerHTML = plainText;
   debugger
   parsedList.push(plainText);
+  return plainText;
 }
 
 function handleViews(result) {
