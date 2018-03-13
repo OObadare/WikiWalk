@@ -39,6 +39,9 @@ function getArticleIntro(searchTerm) {
 }
 
 function getArticleWikitext(searchTerm) {
+  var searchlist = [];
+  //I should use the promise to fill the search list
+  //and call the search with the terms until I find the appropriate one
   $.ajax({
     type: "GET",
     url: `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${searchTerm}&callback=?`,
