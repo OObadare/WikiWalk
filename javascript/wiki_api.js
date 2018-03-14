@@ -38,8 +38,36 @@ function getArticleIntro(searchTerm) {
   });
 }
 
+
+function fillList() {
+  /*have a container function for getarticlewikitext that has the searchList
+  queries to see if it's the requisite length
+  and calls it again with the result if not.
+  */
+  const firstLink = document.getElementById('searchedWikitext').innerHTML;
+  var searchList = [firstLink];
+  const textAjax = (searchTerm) => {
+    $.ajax({
+      type: "GET",
+      url: `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${searchTerm}&callback=?`,
+      contentType: "application/json; charset=utf-8",
+      // async: false,
+      dataType: "json",
+      success: function (data) {
+        searchList.push(parseWikitext(data));
+        debugger
+      },
+      error: function (errorMessage) {
+      }
+    });
+  };
+  // debugger
+  return searchList;
+
+
+}
+
 function getArticleWikitext(searchTerm) {
-  var searchlist = [];
   //I should use the promise to fill the search list
   //and call the search with the terms until I find the appropriate one
   $.ajax({
@@ -49,7 +77,7 @@ function getArticleWikitext(searchTerm) {
     // async: false,
     dataType: "json",
     success: function (data) {
-      displayWikitext(data);
+      document.getElementById('searchedWikitext').innerHTML = parseWikitext(data);
     },
     error: function (errorMessage) {
     }

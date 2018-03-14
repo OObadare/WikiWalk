@@ -13,14 +13,15 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
   document.getElementById('Wikiwalker').addEventListener("click", function(){
-    const firstLink = document.getElementById('searchedWikitext').innerHTML;
-    var linkList = [firstLink];
-    while (linkList.length < 5) {
-      var next = getArticleWikitext(linkList[linkList.length -1]);
-      debugger
-      linkList.push(next);
-      // parsedList.push(document.getElementById('searchedWikitext').innerHTML);
-    }
+    // const firstLink = document.getElementById('searchedWikitext').innerHTML;
+    // var linkList = [firstLink];
+    // while (linkList.length < 5) {
+    //   var next = getArticleWikitext(linkList[linkList.length -1]);
+    //   debugger
+    //   linkList.push(next);
+    //   parsedList.push(document.getElementById('searchedWikitext').innerHTML);
+    // }
+    fillList();
   });
 
   // if ((parsedList.length === 0) && (document.getElementById('searchedWikitext').innerHTML !== ""))  {
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(){
   // }
 });
 
-var parsedList = [];
+// var parsedList = [];
 
 function displayArticle(result) {
   let pageKey = Object.keys(result.query.pages)[0];
@@ -40,7 +41,7 @@ function displayArticle(result) {
   document.getElementById('searchedLink').href = wikiLeak;
 }
 
-function displayWikitext(result) {
+function parseWikitext(result) {
   const returned = result.parse.wikitext;
   const keys = Object.keys(returned);
   var text = returned[keys[0]];
@@ -67,9 +68,8 @@ function displayWikitext(result) {
     plainText = plainText.slice(0, plainText.indexOf("#"));
   }
 
-  document.getElementById('searchedWikitext').innerHTML = plainText;
+  // document.getElementById('searchedWikitext').innerHTML = plainText;
   debugger
-  parsedList.push(plainText);
   return plainText;
 }
 
