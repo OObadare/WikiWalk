@@ -69,7 +69,6 @@ function parseWikitext(result) {
   }
 
   // document.getElementById('searchedWikitext').innerHTML = plainText;
-  debugger
   return plainText;
 }
 
