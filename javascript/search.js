@@ -12,14 +12,21 @@ document.addEventListener("DOMContentLoaded", function(){
     // const views = getArticleViews(dSearch, pastDate, currDate);
   });
 
+/* jshint ignore:start */
   document.getElementById('Wikiwalker').addEventListener("click", async function(){
     var list = [];
     list = await fillList();
+    //list of links
     list.forEach((list) => {
-      nodes.push({link: list});
+      nodes.push({"link": list});
     });
-    debugger
+    //an array of node objects
+    for (i = 0; i < nodes.length -1; i++) {
+      links.push({"source": i, "target": i + 1});
+    };
+
   });
+  /* jshint ignore:end*/
 
   // if ((parsedList.length === 0) && (document.getElementById('searchedWikitext').innerHTML !== ""))  {
   //   debugger
