@@ -13,15 +13,11 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
   document.getElementById('Wikiwalker').addEventListener("click", function(){
-    // const firstLink = document.getElementById('searchedWikitext').innerHTML;
-    // var linkList = [firstLink];
-    // while (linkList.length < 5) {
-    //   var next = getArticleWikitext(linkList[linkList.length -1]);
-    //   debugger
-    //   linkList.push(next);
-    //   parsedList.push(document.getElementById('searchedWikitext').innerHTML);
-    // }
-    fillList();
+    var list = [];
+    fillList().then((result) => {
+      list = result;
+      debugger
+    });
   });
 
   // if ((parsedList.length === 0) && (document.getElementById('searchedWikitext').innerHTML !== ""))  {
@@ -29,8 +25,6 @@ document.addEventListener("DOMContentLoaded", function(){
   //   // getArticleWikitext(document.getElementById('searchedWikitext').innerHTML);
   // }
 });
-
-// var parsedList = [];
 
 function displayArticle(result) {
   let pageKey = Object.keys(result.query.pages)[0];
@@ -67,7 +61,6 @@ function parseWikitext(result) {
   if (plainText.indexOf("#") !== -1) {
     plainText = plainText.slice(0, plainText.indexOf("#"));
   }
-
   // document.getElementById('searchedWikitext').innerHTML = plainText;
   return plainText;
 }

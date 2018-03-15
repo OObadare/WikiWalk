@@ -13,7 +13,6 @@ function makePageViewUrl(dSearch, startDate, endDate){
 function getPageWikitext(dSearch) {
   return `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${dSearch}`;
 }
-//probably going to have to just parse the above using regular expressions -
 //match anything thats NOT in curly braces, after the bolded wikitesxt ('''), in the square brackets for links
 //matches anything not in brackets and after the bolded character: /'''.*(?![^{]*})/mg
 //matches everything between two brackets: /\{\{([^]*)\}\}/g
@@ -28,7 +27,6 @@ function getArticleIntro(searchTerm) {
     type: "GET",
     url: `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=${searchTerm}&callback=?`,
     contentType: "application/json; charset=utf-8",
-    // async: false,
     dataType: "json",
     success: function (data) {
       displayArticle(data);
@@ -40,15 +38,11 @@ function getArticleIntro(searchTerm) {
 
 
 async function fillList() {
-  /*have a container function for getarticlewikitext that has the searchList
-  queries to see if it's the requisite length
-  and calls it again with the result if not.
-  */
   const firstLink = document.getElementById('searchedWikitext').innerHTML;
   var searchList = [firstLink];
   const testAjax = async (searchTerm) => {
     let search = searchTerm;
-    while (searchList.length < 5) {
+    while (searchList.length < 10) {
       let search = searchList[searchList.length-1];
       const data = await $.ajax({
         type: "GET",
@@ -56,24 +50,20 @@ async function fillList() {
         contentType: "application/json; charset=utf-8",
         async: true,
         dataType: "json"
-      })
+      });
       searchList.push(parseWikitext(data));
     }
     return searchList;
   };
   await testAjax(searchList[searchList.length-1]);
-  debugger
   return searchList;
 }
 
 function getArticleWikitext(searchTerm) {
-  //I should use the promise to fill the search list
-  //and call the search with the terms until I find the appropriate one
   $.ajax({
     type: "GET",
     url: `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${searchTerm}&callback=?`,
     contentType: "application/json; charset=utf-8",
-    // async: false,
     dataType: "json",
     success: function (data) {
       document.getElementById('searchedWikitext').innerHTML = parseWikitext(data);
