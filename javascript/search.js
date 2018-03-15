@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", function(){
     // const views = getArticleViews(dSearch, pastDate, currDate);
   });
 
-  document.getElementById('Wikiwalker').addEventListener("click", function(){
+  document.getElementById('Wikiwalker').addEventListener("click", async function(){
     var list = [];
-    fillList().then((result) => {
-      list = result;
-      debugger
+    list = await fillList();
+    list.forEach((list) => {
+      nodes.push({link: list});
     });
-    
+    debugger
   });
 
   // if ((parsedList.length === 0) && (document.getElementById('searchedWikitext').innerHTML !== ""))  {
