@@ -2,7 +2,7 @@
 /*jshint esversion: 6 */
 
 //sets the svg in js, assigns it width and height
-
+debugger
 let links = [];
 let nodes = [];
 

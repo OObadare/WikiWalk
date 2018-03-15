@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(){
     //this ajax request gets the intro paragraph for the searched article
     getArticleIntro(dSearch);
     getArticleWikitext(dSearch);
-    const views = getArticleViews(dSearch, pastDate, currDate);
+    // const views = getArticleViews(dSearch, pastDate, currDate);
   });
 
   document.getElementById('Wikiwalker').addEventListener("click", function(){
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function(){
       list = result;
       debugger
     });
+    
   });
 
   // if ((parsedList.length === 0) && (document.getElementById('searchedWikitext').innerHTML !== ""))  {

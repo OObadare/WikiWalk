@@ -36,7 +36,7 @@ function getArticleIntro(searchTerm) {
   });
 }
 
-
+/* jshint ignore:start */
 async function fillList() {
   const firstLink = document.getElementById('searchedWikitext').innerHTML;
   var searchList = [firstLink];
@@ -58,6 +58,8 @@ async function fillList() {
   await testAjax(searchList[searchList.length-1]);
   return searchList;
 }
+/* jshint ignore:end */
+//I know this is dirty and confusing, but the jshint errors are way more dirty and confusing(not to mention annoying)
 
 function getArticleWikitext(searchTerm) {
   $.ajax({
