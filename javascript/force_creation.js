@@ -1,8 +1,8 @@
 /* jshint browser: true */
 /*jshint esversion: 6 */
 
-let links = [];
-let nodes = [];
+let nodeLinks = [];
+let nodeData = [];
 
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
@@ -17,3 +17,15 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
+
+//Stuff below here is modified from the testfile, not sure about it yet
+function dist(d)
+{
+  return d.distance+30;
+}
+
+var linkForce  = d3.forceLink(nodeLinks).distance(dist).strength(2);
+
+var simulation = d3.forceSimulation(nodeData);
+
+//.alphaDecay(0.01).force("linkForce",d3.forceLink(nodeLinks))

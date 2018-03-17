@@ -17,14 +17,14 @@ document.addEventListener("DOMContentLoaded", function(){
     var list = [];
     list = await fillList();
     //list of links
-    list.forEach((list) => {
-      nodes.push({"link": list});
+    list.forEach((entry) => {
+      nodeData.push({"id": entry});
     });
     //an array of node objects
-    for (i = 0; i < nodes.length -1; i++) {
-      links.push({"source": i, "target": i + 1});
+    for (i = 0; i < nodeData.length -1; i++) {
+      nodeLinks.push({"source": i, "target": i + 1, "distance": i * 10});
     };
-
+    debugger
   });
   /* jshint ignore:end*/
 
