@@ -18,7 +18,15 @@ var svg = d3.select("body").append("svg")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-//Stuff below here is modified from the testfile, not sure about it yet
+          //Stuff below here is modified from the testfile, not sure about it yet
+          
+var force = d3.forceSimulation()
+    .force("charge", d3.forceManyBody().strength(-700).distanceMin(100).distanceMax(1000))
+    .force("link", d3.forceLink().id(function(d) { return d.index }))
+    .force("center", d3.forceCenter(width / 2, height / 2))
+    .force("y", d3.forceY(0.001))
+    .force("x", d3.forceX(0.001));
+
 function dist(d)
 {
   return d.distance+30;
