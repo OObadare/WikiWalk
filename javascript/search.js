@@ -24,12 +24,35 @@ document.addEventListener("DOMContentLoaded", function(){
     for (i = 0; i < nodeData.length -1; i++) {
       nodeLinks.push({"source": i, "target": i + 1, "distance": i * 10});
     };
-    debugger
+    // D3 Stuff
+
+    var simulation = d3.forceSimulation(nodeData);
+
+    simulation
+        .force("charge_force", d3.forceManyBody())
+        .force("center_force", d3.forceCenter(width / 2, height / 2));
+        
+    var node = svg.append("g")
+            .attr("class", "nodes")
+            .selectAll("circle")
+            .data(nodeData)
+            .enter()
+            .append("circle")
+            .attr("r", 5)
+            .attr("fill", "red");
+
+      function tickActions() {
+      //update circle positions to reflect node updates on each tick of the simulation
+      node
+          .attr("cx", function(d) { return d.x; })
+          .attr("cy", function(d) { return d.y; })
+    }
+
+    simulation.on("tick", tickActions );
   });
   /* jshint ignore:end*/
 
   // if ((parsedList.length === 0) && (document.getElementById('searchedWikitext').innerHTML !== ""))  {
-  //   debugger
   //   // getArticleWikitext(document.getElementById('searchedWikitext').innerHTML);
   // }
 });
