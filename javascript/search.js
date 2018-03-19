@@ -69,6 +69,32 @@ document.addEventListener("DOMContentLoaded", function(){
       .enter().append("line")
       .attr("stroke-width", 2);
 
+    //Drag Actions
+
+    var drag_handler = d3.drag()
+    .on("start", drag_start)
+    .on("drag", drag_drag)
+    .on("end", drag_end);
+
+    drag_handler(node)
+
+    function drag_start(d) {
+      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function drag_drag(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
+
+    function drag_end(d) {
+      if (!d3.event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
+
     function tickActions() {
     //update circle positions to reflect node updates on each tick of the simulation
       node
@@ -135,34 +161,34 @@ function parseWikitext(result) {
   return plainText;
 }
 
-function handleViews(result) {
-  const data = result;
-  // if (error) {throw error;}
-
-  data.forEach(function(point){
-    point.date = formatTimeStampforChart(point.timestamp);
-    point.viewCount = +point.views;
-  });
-
-
-  x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain([0, d3.max(data, function(d) { return d.views; })]);
-
-  var valueline = d3.line()
-      .x(function(d) { return x(d.date); })
-      .y(function(d) { return y(d.views); });
-
-  svg.append("path")
-      .data([data])
-      .attr("class", "line")
-      .attr("d", valueline);
-
-  // Add the X Axis
-  svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
-
-  // Add the Y Axis
-  svg.append("g")
-      .call(d3.axisLeft(y));
-}
+// function handleViews(result) {
+//   const data = result;
+//   // if (error) {throw error;}
+//
+//   data.forEach(function(point){
+//     point.date = formatTimeStampforChart(point.timestamp);
+//     point.viewCount = +point.views;
+//   });
+//
+//
+//   x.domain(d3.extent(data, function(d) { return d.date; }));
+//   y.domain([0, d3.max(data, function(d) { return d.views; })]);
+//
+//   var valueline = d3.line()
+//       .x(function(d) { return x(d.date); })
+//       .y(function(d) { return y(d.views); });
+//
+//   svg.append("path")
+//       .data([data])
+//       .attr("class", "line")
+//       .attr("d", valueline);
+//
+//   // Add the X Axis
+//   svg.append("g")
+//       .attr("transform", "translate(0," + height + ")")
+//       .call(d3.axisBottom(x));
+//
+//   // Add the Y Axis
+//   svg.append("g")
+//       .call(d3.axisLeft(y));
+// }
