@@ -4,15 +4,14 @@ slightly-er less deep purple: #240090
 pretty light purple I guess: #3500D3
 boring-ass-grey: #282828 */
 
-.line{
-  fill: none;
-  stroke: #190061;
-  stroke-width: 2px;
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
 }
+
 .nodes circle {
-  pointer-events: all;
   stroke: #fff;
-  stroke-width: 40px;
+  stroke-width: 1.5px;
 }
 
 #searchedTitle {

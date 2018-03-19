@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
     //an array of node objects
     for (i = 0; i < nodeData.length -1; i++) {
-      nodeLinks.push({"source": i, "target": i + 1, "distance": i * 10});
+      nodeLinks.push({"source": i, "target": i + 1, "distance": i * 30});
     };
     // D3 Stuff
 
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function(){
       .data(nodeData)
       .enter()
       .append("circle")
-      .attr("r", 5)
+      .attr("r", 3)
       .attr("fill", "red");
 
     //draw lines for the links
@@ -57,6 +57,14 @@ document.addEventListener("DOMContentLoaded", function(){
       node
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; })
+
+        //simply tells one end of the line to follow one node around
+      //and the other end of the line to follow the other node around
+      link
+          .attr("x1", function(d) { return d.source.x; })
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
       }
 
     simulation.on("tick", tickActions );
