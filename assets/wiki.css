@@ -9,9 +9,15 @@ boring-ass-grey: #282828 */
   stroke-opacity: 0.6;
 }
 
-.nodes circle {
+circle {
   stroke: #fff;
   stroke-width: 1.5px;
+  fill: purple;
+}
+
+.node text {
+  font: 10px sans-serif;
+  color: white;
 }
 
 #searchedTitle {

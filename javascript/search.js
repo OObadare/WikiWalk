@@ -35,14 +35,31 @@ document.addEventListener("DOMContentLoaded", function(){
         .force("center_force", d3.forceCenter(width / 2, height / 2))
         .force("links",link_force);
 
-    var node = svg.append("g")
-      .attr("class", "nodes")
-      .selectAll("circle")
+    var node = svg.selectAll("circle")
       .data(nodeData)
       .enter()
       .append("circle")
-      .attr("r", 3)
-      .attr("fill", "red");
+      .attr("r", 5)
+
+
+    var label = svg.selectAll("linkTitle")
+      .data(nodeData)
+      .enter()
+      .append("text")
+      .text(function (d) {return d.id; })
+      .style("fill", "#555")
+      .style("font-family", "Arial")
+      .style("font-size", 12);
+
+
+    node.append("text")
+      .attr("dx", -18)
+      .attr("dy", 8)
+      // .style("font-family", "overwatch")
+      .style("font-size", "18px")
+      .text(function (d) {
+          return d.id
+      });
 
     //draw lines for the links
     var link = svg.append("g")
@@ -56,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function(){
     //update circle positions to reflect node updates on each tick of the simulation
       node
         .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; })
+        .attr("cy", function(d) { return d.y; });
 
         //simply tells one end of the line to follow one node around
       //and the other end of the line to follow the other node around
@@ -65,6 +82,9 @@ document.addEventListener("DOMContentLoaded", function(){
           .attr("y1", function(d) { return d.source.y; })
           .attr("x2", function(d) { return d.target.x; })
           .attr("y2", function(d) { return d.target.y; });
+
+      label.attr("x", function(d){ return d.x; })
+             .attr("y", function (d) {return d.y - 10; });
       }
 
     simulation.on("tick", tickActions );
