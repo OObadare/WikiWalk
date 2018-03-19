@@ -69,6 +69,8 @@ function getArticleWikitext(searchTerm) {
     dataType: "json",
     success: function (data) {
       document.getElementById('searchedWikitext').innerHTML = parseWikitext(data);
+      // nodeData.push(parseWikitext(data));
+      // debugger
     },
     error: function (errorMessage) {
     }
