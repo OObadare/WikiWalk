@@ -28,25 +28,36 @@ document.addEventListener("DOMContentLoaded", function(){
 
     var simulation = d3.forceSimulation(nodeData);
 
+    var link_force =  d3.forceLink(nodeLinks)
+
     simulation
         .force("charge_force", d3.forceManyBody())
-        .force("center_force", d3.forceCenter(width / 2, height / 2));
-        
-    var node = svg.append("g")
-            .attr("class", "nodes")
-            .selectAll("circle")
-            .data(nodeData)
-            .enter()
-            .append("circle")
-            .attr("r", 5)
-            .attr("fill", "red");
+        .force("center_force", d3.forceCenter(width / 2, height / 2))
+        .force("links",link_force);
 
-      function tickActions() {
-      //update circle positions to reflect node updates on each tick of the simulation
+    var node = svg.append("g")
+      .attr("class", "nodes")
+      .selectAll("circle")
+      .data(nodeData)
+      .enter()
+      .append("circle")
+      .attr("r", 5)
+      .attr("fill", "red");
+
+    //draw lines for the links
+    var link = svg.append("g")
+      .attr("class", "links")
+      .selectAll("line")
+      .data(nodeLinks)
+      .enter().append("line")
+      .attr("stroke-width", 2);
+
+    function tickActions() {
+    //update circle positions to reflect node updates on each tick of the simulation
       node
-          .attr("cx", function(d) { return d.x; })
-          .attr("cy", function(d) { return d.y; })
-    }
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; })
+      }
 
     simulation.on("tick", tickActions );
   });
