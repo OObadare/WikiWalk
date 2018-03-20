@@ -123,9 +123,6 @@ document.addEventListener("DOMContentLoaded", function(){
   });
   /* jshint ignore:end*/
 
-  // if ((parsedList.length === 0) && (document.getElementById('searchedWikitext').innerHTML !== ""))  {
-  //   // getArticleWikitext(document.getElementById('searchedWikitext').innerHTML);
-  // }
 });
 
 function displayArticle(result) {

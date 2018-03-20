@@ -28,7 +28,7 @@ circle {
 #searchedIntro {
   background-color: #282828;
   color: slategrey;
-  border: 1px solid #0C0032;
+  /* border: 1px solid #0C0032; */
   border-radius: 20px;
 }
 

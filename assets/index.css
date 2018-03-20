@@ -7,3 +7,19 @@ html {
   font-weight: 400px;
   color: #3500D3;
 }
+
+header {
+  display: flex;
+  margin-left: 7.5%;
+  margin-right: 7.5%;
+  border-bottom: 2px solid #240090;
+  border-right: 2px solid #240090;
+  border-left: 2px solid #240090;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+header h1{
+  margin-left: 2%;
+  margin-bottom: 2%;
+}

@@ -14,11 +14,20 @@
     <link rel="stylesheet" href="./assets/wiki.css">
   </head>
   <body>
-    <h1 id="title">WikiWalk <br>
-      <form id="search">
-        <input type="text" placeholder="Search Wikipedia!">
-      </form>
-    </h1>
+    <header>
+      <h1>
+        <div id="title">W i k i W a l k <br>
+          <form id="search">
+            <input type="text" placeholder="Search Wikipedia!">
+          </form>
+        </div>
+      </h1>
+      <h2 id="talkContainer">
+        <div class="introText">
+          WikiWalk is a data visalization made with vanilla JavaScript and D3 that uses the WikiMedia API in conjunction with regular expressions to find the first (unitalicized, nonparenthesized, etc etc) links in Wikipedia articles and follow them to the Philosphy page. 
+        </div>
+      </h2>
+    </header>
     <div id="searchedTitle"></div>
     <div id="searchedIntro"></div>
     <div id="Wikiwalker">Click me to go through wikipedia.</div>
