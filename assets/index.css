@@ -2,16 +2,15 @@ html {
   background-color: #222629 ;
 }
 
-#title {
-  font-size: 20px;
-  font-weight: 400px;
-  color: #3500D3;
+.introText {
+  font-size: 16px;
+  color: slategrey;
 }
 
 header {
   display: flex;
-  margin-left: 7.5%;
-  margin-right: 7.5%;
+  margin-left: 70px;
+  margin-right: 70px;
   border-bottom: 2px solid #240090;
   border-right: 2px solid #240090;
   border-left: 2px solid #240090;
@@ -19,7 +18,39 @@ header {
   border-bottom-right-radius: 20px;
 }
 
+#title {
+  font-size: 30px;
+  font-weight: 400px;
+  color: #3500D3;
+  border-right: 3px solid #240090;
+  text-align: center;
+
+}
+
+
+
+#talkContainer {
+  margin-left: 10px;
+}
+
 header h1{
   margin-left: 2%;
-  margin-bottom: 2%;
+  margin-bottom: .5%;
+  width: 400px;
+}
+
+input {
+  margin-top: 5px;
+  border: 2px solid #190061;
+  border-radius: 20px;
+  background-color: slategrey;
+  color: #0C0032;
+  width: 70%;
+  text-align: center;
+}
+
+::placeholder {
+  color: #0C0032;
+  text-align: center;
+
 }

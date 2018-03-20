@@ -24,17 +24,22 @@
       </h1>
       <h2 id="talkContainer">
         <div class="introText">
-          WikiWalk is a data visalization made with vanilla JavaScript and D3 that uses the WikiMedia API in conjunction with regular expressions to find the first (unitalicized, nonparenthesized, etc etc) links in Wikipedia articles and follow them to the Philosphy page. 
+          WikiWalk is a data visalization made with vanilla JavaScript and D3 that uses the WikiMedia API in conjunction with regular expressions to find the first (unitalicized, nonparenthesized, etc etc) links in Wikipedia articles and follow them to the Philosphy page.
         </div>
       </h2>
     </header>
-    <div id="searchedTitle"></div>
-    <div id="searchedIntro"></div>
-    <div id="Wikiwalker">Click me to go through wikipedia.</div>
+    <section class="searchedInfo">
+      <script src="javascript/force_creation.js"></script>
+      <div id=articleHolder>
+        <div id="searchedTitle"></div>
+        <div id="searchedIntro">
+        </div>
+        <a id="searchedLink">Visit the Page!</a>
+      </div>
+    </section>
     <div id="searchedWikitext"></div>
-    <a id="searchedLink">Visit the Page!</a>
+    <div id="Wikiwalker">Click me to go through wikipedia.</div>
     <script type="application/javascript" src="javascript/wiki_api.js"></script>
     <script type="application/javascript" src="javascript/search.js"></script>
-    <script src="javascript/force_creation.js"></script>
   </body>
 </html>

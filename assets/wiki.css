@@ -20,20 +20,54 @@ circle {
   color: white;
 }
 
+.searchedInfo {
+  margin-left: 70px;
+  margin-right: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
 #searchedTitle {
+  margin-left: 7.5%;
   font-size: 20px;
   color: white;
 }
 
+#articleHolder {
+  margin-top: 20px;
+  width: 20%;
+  height: 500px;
+  text-align: center;
+}
+
 #searchedIntro {
+  padding: 5px;
+  height: 450px;
   background-color: #282828;
   color: slategrey;
-  /* border: 1px solid #0C0032; */
+  border: 1px solid #0C0032;
   border-radius: 20px;
+  overflow:scroll;
 }
+/* #searchedIntro {
+  border: 1px solid #0C0032;
+  margin-top: 20px;
+  padding: 5px;
+  background-color: #282828;
+  color: slategrey;
+  border-radius: 20px;
+  width: 20%;
+  height: 500px;
+  overflow:scroll;
+} */
 
 #searchedWikitext {
   color: slategrey;
+  font-size: 20px;
+}
+
+#searchedLink {
+  color:slategrey;
   font-size: 20px;
 }
 
