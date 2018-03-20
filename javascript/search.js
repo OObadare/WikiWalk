@@ -2,7 +2,7 @@
 /*jshint esversion: 6 */
 
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", async function(){
   document.getElementById('search').addEventListener("submit", (e) => {
     e.preventDefault();
     const dSearch = e.currentTarget[0].value;

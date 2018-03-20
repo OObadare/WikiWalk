@@ -38,7 +38,7 @@ function getArticleIntro(searchTerm) {
 
 /* jshint ignore:start */
 async function fillList() {
-  const firstLink = document.getElementById('searchedWikitext').innerHTML;
+  const firstLink = searchedWikiLinks[searchedWikiLinks.length-1];
   var searchList = [firstLink];
   const testAjax = async (searchTerm) => {
     let search = searchTerm;
@@ -68,7 +68,7 @@ function getArticleWikitext(searchTerm) {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {
-      document.getElementById('searchedWikitext').innerHTML = parseWikitext(data);
+      searchedWikiLinks.push (parseWikitext(data));
       // nodeData.push(parseWikitext(data));
       // debugger
     },
