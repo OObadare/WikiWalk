@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", async function(){
     svg.selectAll("*")
     debugger
     var list = [document.getElementById("searchedTitle").innerHTML];
+    var nodeCounter = 0;
     list = list.concat(await fillList());
     //list of links
     for (let entry of list) {
@@ -28,7 +29,8 @@ document.addEventListener("DOMContentLoaded", async function(){
       } else {
         debugger
         nodeData.push({"id": entry});
-        if (nodeData.length < list.length){
+        nodeCounter += 1;
+        if (nodeCounter < list.length){
           nodeLinks.push({"source": nodeData.length-1, "target":nodeData.length , "distance":90});
         }
       }
