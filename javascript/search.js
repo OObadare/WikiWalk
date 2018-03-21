@@ -14,22 +14,26 @@ document.addEventListener("DOMContentLoaded", async function(){
 
 /* jshint ignore:start */
   document.getElementById('Wikiwalker').addEventListener("click", async function(){
+    svg.selectAll("*")
+    debugger
     var list = [document.getElementById("searchedTitle").innerHTML];
     list = list.concat(await fillList());
     //list of links
     for (let entry of list) {
       if (nodeData.find((obj) => obj.id.toLowerCase() === entry.toLowerCase())){
+        debugger
         oldLink = nodeLinks[nodeLinks.length-1];
         nodeLinks[nodeLinks.length-1] = ({"source":oldLink.source, "target":nodeData.findIndex((obj) => obj.id === entry), "distance": 90 });
-        debugger
         break;
       } else {
-        nodeData.push({"id": entry});
-        nodeLinks.push({"source": nodeData.length-1, "target":nodeData.length , "distance":90})
         debugger
+        nodeData.push({"id": entry});
+        if (nodeData.length < list.length){
+          nodeLinks.push({"source": nodeData.length-1, "target":nodeData.length , "distance":90});
+        }
       }
     }
-    nodeLinks.pop();
+
     //an array of node objects
     // for (i = 0; i < nodeData.length -1; i++) {
     //   nodeLinks.push({"source": i, "target": i + 1, "distance": i * 30});
@@ -130,6 +134,7 @@ document.addEventListener("DOMContentLoaded", async function(){
       }
 
     simulation.on("tick", tickActions );
+    debugger
   });
   /* jshint ignore:end*/
 
