@@ -14,16 +14,26 @@ document.addEventListener("DOMContentLoaded", async function(){
 
 /* jshint ignore:start */
   document.getElementById('Wikiwalker').addEventListener("click", async function(){
-    var list = [];
-    list = await fillList();
+    var list = [document.getElementById("searchedTitle").innerHTML];
+    list = list.concat(await fillList());
     //list of links
-    list.forEach((entry) => {
-      nodeData.push({"id": entry});
-    });
+    for (let entry of list) {
+      if (nodeData.find((obj) => obj.id.toLowerCase() === entry.toLowerCase())){
+        oldLink = nodeLinks[nodeLinks.length-1];
+        nodeLinks[nodeLinks.length-1] = ({"source":oldLink.source, "target":nodeData.findIndex((obj) => obj.id === entry), "distance": 90 });
+        debugger
+        break;
+      } else {
+        nodeData.push({"id": entry});
+        nodeLinks.push({"source": nodeData.length-1, "target":nodeData.length , "distance":90})
+        debugger
+      }
+    }
+    nodeLinks.pop();
     //an array of node objects
-    for (i = 0; i < nodeData.length -1; i++) {
-      nodeLinks.push({"source": i, "target": i + 1, "distance": i * 30});
-    };
+    // for (i = 0; i < nodeData.length -1; i++) {
+    //   nodeLinks.push({"source": i, "target": i + 1, "distance": i * 30});
+    // };
     // D3 Stuff
 
     var simulation = d3.forceSimulation(nodeData);
