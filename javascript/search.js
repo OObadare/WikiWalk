@@ -14,20 +14,20 @@ document.addEventListener("DOMContentLoaded", async function(){
 
 /* jshint ignore:start */
   document.getElementById('Wikiwalker').addEventListener("click", async function(){
-    svg.selectAll("*")
-    debugger
     var list = [document.getElementById("searchedTitle").innerHTML];
     var nodeCounter = 0;
     list = list.concat(await fillList());
     //list of links
     for (let entry of list) {
       if (nodeData.find((obj) => obj.id.toLowerCase() === entry.toLowerCase())){
-        debugger
+        d3.select("g.parent").selectAll("*").remove();
+        svg.selectAll("circle").remove();
+        svg.selectAll("text").remove();
+        svg.selectAll("line").remove();
         oldLink = nodeLinks[nodeLinks.length-1];
-        nodeLinks[nodeLinks.length-1] = ({"source":oldLink.source, "target":nodeData.findIndex((obj) => obj.id === entry), "distance": 90 });
+        nodeLinks[nodeLinks.length-1] = ({"source":oldLink.source, "target":nodeData.findIndex((obj) => obj.id.toLowerCase === entry.toLowerCase), "distance": 90 });
         break;
       } else {
-        debugger
         nodeData.push({"id": entry});
         nodeCounter += 1;
         if (nodeCounter < list.length){
@@ -71,7 +71,6 @@ document.addEventListener("DOMContentLoaded", async function(){
     node.append("text")
       .attr("dx", -18)
       .attr("dy", 8)
-      // .style("font-family", "overwatch")
       .style("font-size", "18px")
       .text(function (d) {
           return d.id
@@ -136,7 +135,7 @@ document.addEventListener("DOMContentLoaded", async function(){
       }
 
     simulation.on("tick", tickActions );
-    debugger
+
   });
   /* jshint ignore:end*/
 

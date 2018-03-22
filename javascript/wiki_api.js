@@ -69,8 +69,6 @@ function getArticleWikitext(searchTerm) {
     dataType: "json",
     success: function (data) {
       searchedWikiLinks.push (parseWikitext(data));
-      // nodeData.push(parseWikitext(data));
-      // debugger
     },
     error: function (errorMessage) {
     }
