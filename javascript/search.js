@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async function(){
         svg.selectAll("text").remove();
         svg.selectAll("line").remove();
         oldLink = nodeLinks[nodeLinks.length-1];
-        nodeLinks[nodeLinks.length-1] = ({"source":oldLink.source, "target":nodeData.findIndex((obj) => obj.id.toLowerCase === entry.toLowerCase), "distance": 90 });
+        nodeLinks[nodeLinks.length-1] = ({"source":oldLink.source, "target":nodeData.findIndex((obj) => obj.id.toLowerCase() === entry.toLowerCase()), "distance": 90 });
         break;
       } else {
         nodeData.push({"id": entry});
@@ -35,12 +35,6 @@ document.addEventListener("DOMContentLoaded", async function(){
         }
       }
     }
-
-    //an array of node objects
-    // for (i = 0; i < nodeData.length -1; i++) {
-    //   nodeLinks.push({"source": i, "target": i + 1, "distance": i * 30});
-    // };
-    // D3 Stuff
 
     var simulation = d3.forceSimulation(nodeData);
 
@@ -83,6 +77,9 @@ document.addEventListener("DOMContentLoaded", async function(){
       .data(nodeLinks)
       .enter().append("line")
       .attr("stroke-width", 2);
+
+    link.exit().remove();
+    label.exit().remove();
 
 
   //open article wikitext
@@ -138,7 +135,6 @@ document.addEventListener("DOMContentLoaded", async function(){
 
   });
   /* jshint ignore:end*/
-
 });
 
 function displayArticle(result) {

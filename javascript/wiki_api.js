@@ -42,7 +42,7 @@ async function fillList() {
   var searchList = [firstLink];
   const testAjax = async (searchTerm) => {
     let search = searchTerm;
-    while (searchList.length < 10) {
+    while (searchList.length < 12) {
       let search = searchList[searchList.length-1];
       const data = await $.ajax({
         type: "GET",
