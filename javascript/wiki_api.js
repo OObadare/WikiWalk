@@ -40,9 +40,10 @@ function getArticleIntro(searchTerm) {
 async function fillList() {
   const firstLink = searchedWikiLinks[searchedWikiLinks.length-1];
   var searchList = [firstLink];
-  const testAjax = async (searchTerm) => {
+  const listBuildingCall = async (searchTerm) => {
     let search = searchTerm;
-    while (searchList.length < 12) {
+    while (searchList[searchList.length-1] !== "reality") {
+      // debugger
       let search = searchList[searchList.length-1];
       const data = await $.ajax({
         type: "GET",
@@ -55,7 +56,7 @@ async function fillList() {
     }
     return searchList;
   };
-  await testAjax(searchList[searchList.length-1]);
+  await listBuildingCall(searchList[searchList.length-1]);
   return searchList;
 }
 /* jshint ignore:end */
