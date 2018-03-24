@@ -45,11 +45,19 @@ document.addEventListener("DOMContentLoaded", async function(){
         .force("center_force", d3.forceCenter(width / 2, height / 2))
         .force("links",link_force);
 
+    //draw lines for the links
+    var link = svg.append("g")
+    .attr("class", "links")
+    .selectAll("line")
+    .data(nodeLinks)
+    .enter().append("line")
+    .attr("stroke-width", 2);
+
     var node = svg.selectAll("circle")
       .data(nodeData)
       .enter()
       .append("circle")
-      .attr("r", 5)
+      .attr("r", 7)
 
 
     var label = svg.selectAll("linkTitle")
@@ -57,9 +65,9 @@ document.addEventListener("DOMContentLoaded", async function(){
       .enter()
       .append("text")
       .text(function (d) {return d.id; })
-      .style("fill", "#555")
-      .style("font-family", "Arial")
-      .style("font-size", 12);
+      .style("fill", "lightgrey")
+      // .style("font-family", "Arial")
+      .style("font-size", 15);
 
 
     node.append("text")
@@ -70,13 +78,6 @@ document.addEventListener("DOMContentLoaded", async function(){
           return d.id
       });
 
-    //draw lines for the links
-    var link = svg.append("g")
-      .attr("class", "links")
-      .selectAll("line")
-      .data(nodeLinks)
-      .enter().append("line")
-      .attr("stroke-width", 2);
 
     link.exit().remove();
     label.exit().remove();
@@ -140,7 +141,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 function displayArticle(result) {
   let pageKey = Object.keys(result.query.pages)[0];
   document.getElementById('searchedTitle').innerHTML = result.query.pages[pageKey].title;
-  document.getElementById('searchedIntro').innerHTML = result.query.pages[pageKey].extract || "";
+  document.getElementById('searchedIntroText').innerHTML = result.query.pages[pageKey].extract || "";
   document.getElementById('searchedLink').href = "";
   let wikiLeak = `https://en.wikipedia.org/wiki/${result.query.pages[pageKey].title}`;
   document.getElementById('searchedLink').href = wikiLeak;

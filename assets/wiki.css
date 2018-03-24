@@ -12,17 +12,22 @@ boring-ass-grey: #282828 */
 circle {
   stroke: #fff;
   stroke-width: 1.5px;
-  fill: purple;
+  fill: #240090;
 }
 
 circle:hover {
-  r: 8;
+  r: 10;
+  fill: #3500D3;
 }
 
-.node text {
-  font: 10px sans-serif;
+label {
   color: white;
 }
+
+/* .node text {
+  font: 10px sans-serif;
+  color: white;
+} */
 
 .searchedInfo {
   margin-left: 70px;
@@ -44,11 +49,18 @@ circle:hover {
   text-align: center;
 }
 
-#searchedIntro {
+/* #searchedIntro {
+  background-color: black;
+  opacity: 0.5;
+  filter: blur(10px);
+} */
+
+#searchedIntroText {
+  z-index: 5;
   padding: 5px;
   height: 450px;
   background-color: #282828;
-  color: slategrey;
+  color: #D3D3D3;
   border: 1px solid #0C0032;
   border-radius: 20px;
   overflow:scroll;
@@ -92,10 +104,6 @@ svg {
   background-color: #282828;
   border: 1px solid #0C0032;
   border-radius: 20px;
-}
-
-svg text {
-  fill: white;
 }
 
 .link {

@@ -2,10 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <style>
-
-    </style>
-
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
     <title>Wiki Walk</title>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -24,7 +21,7 @@
       </h1>
       <h2 id="talkContainer">
         <div class="introText">
-          WikiWalk is a data visalization made with JavaScript, JQuery and D3 that uses the WikiMedia API in conjunction with regular expressions to find the first (unitalicized, nonparenthesized) links in Wikipedia articles and follow them to the Reality page. Search multiple times to build a web of links.
+          WikiWalk is a data visalization made with JavaScript, JQuery and D3 that uses the WikiMedia API in conjunction with regular expressions to find the first (unitalicized, nonparenthesized) links in Wikipedia articles and follow them to the Reality page. Search multiple terms to build a web of links, and click each node to display the article's intro.
         </div>
       </h2>
     </header>
@@ -33,6 +30,7 @@
       <div id=articleHolder>
         <div id="searchedTitle"></div>
         <div id="searchedIntro">
+          <p id="searchedIntroText"></p>
         </div>
         <a id="searchedLink">Visit the Page!</a>
       </div>

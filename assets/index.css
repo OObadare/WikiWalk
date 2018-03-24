@@ -1,10 +1,14 @@
 html {
   background-color: #222629 ;
+  background-image: url(../assets/images/maybe-background.png);
+  background-size: cover;
+  font-family: 'Questrial', sans-serif;
 }
 
 .introText {
   font-size: 16px;
-  color: slategrey;
+  color: #D3D3D3;
+  text-align: center;
 }
 
 header {
@@ -19,7 +23,7 @@ header {
 }
 
 #title {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 400px;
   color: #3500D3;
   border-right: 3px solid #240090;
