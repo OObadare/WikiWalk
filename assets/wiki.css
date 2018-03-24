@@ -15,6 +15,10 @@ circle {
   fill: purple;
 }
 
+circle:hover {
+  r: 8;
+}
+
 .node text {
   font: 10px sans-serif;
   color: white;

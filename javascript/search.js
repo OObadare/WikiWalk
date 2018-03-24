@@ -165,6 +165,14 @@ function parseWikitext(result) {
   }
   //another regex search that returns the contents of the first link in the second index
   const links = linkSearch.exec(text);
+  // debugger
+  try {
+    if (links === "undefined") {
+      throw "Links was undefined";
+    }
+  } catch (e) {
+    document.getElementById("errorPlace").innerHTML = e;
+  }
   let plainText = links[2];
   if (plainText.indexOf("|") !== -1) {
     plainText = plainText.slice(0, plainText.indexOf("|"));
