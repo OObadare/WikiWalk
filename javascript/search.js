@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", async function(){
     getArticleIntro(dSearch);
     getArticleWikitext(dSearch);
     // const views = getArticleViews(dSearch, pastDate, currDate);
-  });
+  }
+);
 
 /* jshint ignore:start */
   document.getElementById('Wikiwalker').addEventListener("click", async function(){
