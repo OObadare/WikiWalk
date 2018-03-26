@@ -62,8 +62,8 @@ async function fillList() {
 /* jshint ignore:end */
 //I know this is dirty and confusing, but the jshint errors are way more dirty and confusing(not to mention annoying)
 
-function getArticleWikitext(searchTerm) {
-  $.ajax({
+async function getArticleWikitext(searchTerm) {
+  await $.ajax({
     type: "GET",
     url: `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${searchTerm}&callback=?`,
     contentType: "application/json; charset=utf-8",

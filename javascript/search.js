@@ -3,18 +3,19 @@
 
 
 document.addEventListener("DOMContentLoaded", async function(){
-  document.getElementById('search').addEventListener("submit", (e) => {
+  document.getElementById('search').addEventListener("submit", async (e) => {
     e.preventDefault();
     const dSearch = e.currentTarget[0].value;
     //this ajax request gets the intro paragraph for the searched article
     getArticleIntro(dSearch);
-    getArticleWikitext(dSearch);
+    await getArticleWikitext(dSearch);
+    makeAGraph();
     // const views = getArticleViews(dSearch, pastDate, currDate);
   }
 );
 
 /* jshint ignore:start */
-  document.getElementById('Wikiwalker').addEventListener("click", async function(){
+  async function makeAGraph(){
     var list = [document.getElementById("searchedTitle").innerHTML];
     var nodeCounter = 0;
     list = list.concat(await fillList());
@@ -135,7 +136,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
     simulation.on("tick", tickActions );
 
-  });
+  };
   /* jshint ignore:end*/
 });
 
