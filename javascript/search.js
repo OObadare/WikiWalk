@@ -150,6 +150,10 @@ function displayArticle(result) {
 }
 
 function parseWikitext(result) {
+  if (result.error) {
+    document.getElementById("errorDiv").innerHTML = "Are you sure that you searched an actual thing? That thing that you searched is probably not a thing.";
+    return "err";
+  }
   const returned = result.parse.wikitext;
   const keys = Object.keys(returned);
   var text = returned[keys[0]];
@@ -171,11 +175,15 @@ function parseWikitext(result) {
   // debugger
   try {
     if (links === "undefined") {
-      throw "Links was undefined";
+      throw "We weren't quite able to finish this search; seems like we ran into some unfriendly formatting. Try searching something else!";
+    } else if (links == null) {
+      throw "We weren't quite able to finish this search; seems like we ran into some unfriendly formatting. Try searching something else!";
     }
-  } catch (e) {
-    document.getElementById("errorPlace").innerHTML = e;
+  } catch (err) {
+    document.getElementById("errorDiv").innerHTML = err;
+    return "err";
   }
+
   let plainText = links[2];
   if (plainText.indexOf("|") !== -1) {
     plainText = plainText.slice(0, plainText.indexOf("|"));

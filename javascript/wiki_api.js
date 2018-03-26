@@ -31,8 +31,6 @@ function getArticleIntro(searchTerm) {
     success: function (data) {
       displayArticle(data);
     },
-    error: function (errorMessage) {
-    }
   });
 }
 
@@ -52,6 +50,10 @@ async function fillList() {
         async: true,
         dataType: "json"
       });
+      var resultData = parseWikitext(data);
+      if (resultData === "err") {
+        return searchList;
+      }
       searchList.push(parseWikitext(data));
     }
     return searchList;
