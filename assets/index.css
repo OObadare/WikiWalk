@@ -12,6 +12,8 @@ html {
 }
 
 header {
+  background-color: #222629;
+  opacity: .8;
   display: flex;
   margin-left: 70px;
   margin-right: 70px;

@@ -83,10 +83,10 @@ document.addEventListener("DOMContentLoaded", async function(){
     label.exit().remove();
 
 
-  //open article wikitext
-  node.on("click", function() {
-    getArticleIntro(d3.select(this).text());
-  });
+    //open article wikitext
+    node.on("click", function() {
+      getArticleIntro(d3.select(this).text());
+    });
 
     //Drag Actions
 
@@ -96,23 +96,23 @@ document.addEventListener("DOMContentLoaded", async function(){
     .on("end", drag_end);
 
     function drag_start(d) {
-    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-    d.fx = d.x;
-    d.fy = d.y;
-  }
+      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
 
-  function drag_drag(d) {
-    d.fx = d3.event.x;
-    d.fy = d3.event.y;
-  }
+    function drag_drag(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
 
-  function drag_end(d) {
-    if (!d3.event.active) simulation.alphaTarget(0);
-    d.fx = null;
-    d.fy = null;
-  }
+    function drag_end(d) {
+      if (!d3.event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
 
-  drag_handler(node);
+    drag_handler(node);
 
     function tickActions() {
     //update circle positions to reflect node updates on each tick of the simulation
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
       label.attr("x", function(d){ return d.x; })
              .attr("y", function (d) {return d.y - 10; });
-      }
+    }
 
     simulation.on("tick", tickActions );
 
