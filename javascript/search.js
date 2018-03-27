@@ -68,7 +68,6 @@ document.addEventListener("DOMContentLoaded", async function(){
       .append("text")
       .text(function (d) {return d.id; })
       .style("fill", "lightgrey")
-      // .style("font-family", "Arial")
       .style("font-size", 15);
 
 
@@ -172,7 +171,6 @@ function parseWikitext(result) {
   }
   //another regex search that returns the contents of the first link in the second index
   const links = linkSearch.exec(text);
-  // debugger
   try {
     if (links === "undefined") {
       throw "We weren't quite able to finish this search; seems like we ran into some unfriendly formatting. Try searching something else!";
@@ -191,38 +189,6 @@ function parseWikitext(result) {
   if (plainText.indexOf("#") !== -1) {
     plainText = plainText.slice(0, plainText.indexOf("#"));
   }
-  // document.getElementById('searchedWikitext').innerHTML = plainText;
+
   return plainText;
 }
-
-// function handleViews(result) {
-//   const data = result;
-//   // if (error) {throw error;}
-//
-//   data.forEach(function(point){
-//     point.date = formatTimeStampforChart(point.timestamp);
-//     point.viewCount = +point.views;
-//   });
-//
-//
-//   x.domain(d3.extent(data, function(d) { return d.date; }));
-//   y.domain([0, d3.max(data, function(d) { return d.views; })]);
-//
-//   var valueline = d3.line()
-//       .x(function(d) { return x(d.date); })
-//       .y(function(d) { return y(d.views); });
-//
-//   svg.append("path")
-//       .data([data])
-//       .attr("class", "line")
-//       .attr("d", valueline);
-//
-//   // Add the X Axis
-//   svg.append("g")
-//       .attr("transform", "translate(0," + height + ")")
-//       .call(d3.axisBottom(x));
-//
-//   // Add the Y Axis
-//   svg.append("g")
-//       .call(d3.axisLeft(y));
-// }

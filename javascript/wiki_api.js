@@ -9,7 +9,6 @@ function makePageViewUrl(dSearch, startDate, endDate){
   return `https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/${dSearch}/daily/${startDate}/${endDate}`;
 }
 
-//get wikitext
 function getPageWikitext(dSearch) {
   return `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${dSearch}`;
 }
@@ -41,7 +40,6 @@ async function fillList() {
   const listBuildingCall = async (searchTerm) => {
     let search = searchTerm;
     while (searchList[searchList.length-1] !== "reality") {
-      // debugger
       let search = searchList[searchList.length-1];
       const data = await $.ajax({
         type: "GET",
