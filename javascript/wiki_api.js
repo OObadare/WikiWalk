@@ -50,7 +50,7 @@ async function fillList() {
       });
       var resultData = parseWikitext(data);
       if (resultData === "err") {
-        return searchList;
+        return error;
       }
       searchList.push(parseWikitext(data));
     }

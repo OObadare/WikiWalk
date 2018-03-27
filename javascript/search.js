@@ -134,6 +134,7 @@ document.addEventListener("DOMContentLoaded", async function(){
     }
 
     simulation.on("tick", tickActions );
+    document.getElementById("errorDiv").innerHTML = "";
 
   };
   /* jshint ignore:end*/

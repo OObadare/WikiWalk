@@ -45,6 +45,10 @@ header h1{
   width: 400px;
 }
 
+#errorDiv {
+  margin-left: 70px;
+}
+
 input {
   margin-top: 5px;
   border: 2px solid #190061;
