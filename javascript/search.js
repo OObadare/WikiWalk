@@ -4,6 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", async function(){
   document.getElementById('search').addEventListener("submit", async (e) => {
+    document.getElementById("errorDiv").innerHTML = "";
     e.preventDefault();
     const dSearch = e.currentTarget[0].value;
     //this ajax request gets the intro paragraph for the searched article
@@ -134,7 +135,7 @@ document.addEventListener("DOMContentLoaded", async function(){
     }
 
     simulation.on("tick", tickActions );
-    document.getElementById("errorDiv").innerHTML = "";
+
 
   };
   /* jshint ignore:end*/

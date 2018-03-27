@@ -47,6 +47,8 @@ header h1{
 
 #errorDiv {
   margin-left: 70px;
+  color: red;
+  font-size: 20px;
 }
 
 input {
