@@ -20,9 +20,18 @@ function getArticleIntro(searchTerm) {
 }
 ```
 
-* Bubbles of varying size corresponding to how many people have visited their respective pages on Wikipedia.
+* The plaintext intro is added to the webpage, and the returned wikitext (their word, not mine) is parsed using regular expressions, pulling out the first link - this step is repeated until the first link is "reality.":
 
-* New bubbles leading to different pages should open on click of a previous bubble. The screen should zoom and focus to accommodate said bubbling.
+```
+const deBracket = /'''.*(?![^{]*})/mg; //searches for everything outside* curly braces *except some things for some reason
+const deParenthesize = /\([^)]*\)/mg; //looks for parentheses and removes them all
+const linkSearch = /(\[\[(.*?)\]\])/; //searches for everything inside brackets
+
+```
+
+* The resulting array of links is then used to build nodes for a D3 force map.
+
+[Imgur](https://i.imgur.com/sDjktGB.png)
 
 
 ### Architecture and Technologies
@@ -36,4 +45,4 @@ function getArticleIntro(searchTerm) {
 
 ### Future Features
 
-* Parsing
+* Parsing using a screen parser instead of regular expressions is coming, along with more elaborate parsing techniques for the wide variety of wikipedia formats.
