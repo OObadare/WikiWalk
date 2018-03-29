@@ -4,6 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", async function(){
   document.getElementById('search').addEventListener("submit", async (e) => {
+    document.getElementById("loader").style.display = "inline";
     document.getElementById("errorDiv").innerHTML = "";
     e.preventDefault();
     const dSearch = e.currentTarget[0].value;
@@ -134,6 +135,7 @@ document.addEventListener("DOMContentLoaded", async function(){
              .attr("y", function (d) {return d.y - 10; });
     }
 
+    document.getElementById("loader").style.display = "none";
     simulation.on("tick", tickActions );
 
 
@@ -152,7 +154,7 @@ function displayArticle(result) {
 
 function parseWikitext(result) {
   if (result.error) {
-    document.getElementById("errorDiv").innerHTML = "Are you sure that you searched an actual thing? That thing that you searched is probably not a thing.";
+    document.getElementById("errorDiv").innerHTML = "Are you sure that you searched an actual thing? It's likely that you searched for something that's not the title of a Wikipedia article.";
     return "err";
   }
   const returned = result.parse.wikitext;

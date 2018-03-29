@@ -30,6 +30,7 @@ label {
 } */
 
 .searchedInfo {
+  margin-top: 20px;
   margin-left: 70px;
   margin-right: 70px;
   display: flex;
