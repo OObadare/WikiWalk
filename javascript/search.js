@@ -177,9 +177,9 @@ function parseWikitext(result) {
   const links = linkSearch.exec(text);
   try {
     if (links === "undefined") {
-      throw "We weren't quite able to finish this search; seems like we ran into some unfriendly formatting. Try searching something else!";
+      throw "We weren't quite able to finish building this graph; seems like we ran into some unfriendly formatting. Try searching something else!";
     } else if (links == null) {
-      throw "We weren't quite able to finish this search; seems like we ran into some unfriendly formatting. Try searching something else!";
+      throw "We weren't quite able to finish building this search; seems like we ran into some unfriendly formatting. Try searching something else!";
     }
   } catch (err) {
     document.getElementById("errorDiv").innerHTML = err;

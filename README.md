@@ -1,14 +1,14 @@
 # WikiWalk
 
 ### Overview
-A data visualization project that lets you “crawl” through Wikipedia by clicking on links that appear in bubbles and branch out to more bubbles. This would make a web of articles as the user clicks the bubbles, allowing them to see how interconnected Wikipedia is. 
+Supposedly, if one selects a wikipedia article and keeps clicking the first non-italicized, non-parenthesized link, it will lead to the article for Philosophy roughly 90 percent of the time. WikiWalk is a project to investigate this claim, although it attempts to take the user to Reality instead of Philosophy.
 
-### MVPs
+### Ho
 * User should be able to query Wikipedia for a starting point.
 
-* Bubbles of varying size corresponding to how many people have visited their respective pages on Wikipedia. 
+* Bubbles of varying size corresponding to how many people have visited their respective pages on Wikipedia.
 
-* New bubbles leading to different pages should open on click of a previous bubble. The screen should zoom and focus to accommodate said bubbling. 
+* New bubbles leading to different pages should open on click of a previous bubble. The screen should zoom and focus to accommodate said bubbling.
 
 ### Wireframes
 
@@ -20,24 +20,13 @@ The main component will be bubbles, which contain an image of the page header. C
 
 ### Architecture and Technologies
 
-* D3
+* D3.js - Creating the force graph for the links
 
-* MediaWiki’s API; for some reason Wikipedia doesn’t have its own
+* MediaWiki API - Querying Wikipedia pages for a variety of information
 
-* In addition to the landing page, I will also need a script for creating bubbles - they will be circular bubbles with the title of the page and maybe the primary picture, if there is one. 
+* Regex - Parsing the pages returned by the MediaWiki Ajax requests
 
-* There will also need to be a search bar so users can enter a page to start from if they choose to.
 
-* At least one script will be devoted to determining which links to render- some Wikipedia pages have hundreds of them. 
+### Future Features
 
-### Implementation Timeline 
-
-* Wednesday: Learn about D3, create entry file, setup webpack and more detailed schema/architecture. Figure out the wikipedia API. Complete landing page and search bar.
-* Thursday: Devote the day to learning D3. Work on bubbles.
-* Friday: Finish Bubbles, bubble links. Figure out the script that I need to determine which bubbles to show. 
-* Weekend: Style, About columns/modals. 
-
-### Bonus
-
-Clicking on the first link in the main text of a Wikipedia article, and then repeating the process for subsequent articles, would usually lead to the Philosophy article. As of February 2016, 97% of all articles in Wikipedia eventually led to the article Philosophy.
-I would like to include a button that automatically walks the user through the process from the currently selected article - automatically opening the bubbles until it gets to Philosophy (if possible) and alerting the user if it hits a loop, e.g. two articles that refer immediately back to each other.
+* Parsing 
