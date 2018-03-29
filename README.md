@@ -31,7 +31,8 @@ const linkSearch = /(\[\[(.*?)\]\])/; //searches for everything inside brackets
 
 * The resulting array of links is then used to build nodes for a D3 force map.
 
-[Imgur](https://i.imgur.com/sDjktGB.png)
+![Imgur](https://i.imgur.com/sDjktGB.png)
+
 
 
 ### Architecture and Technologies
