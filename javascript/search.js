@@ -144,9 +144,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 });
 
 function displayArticle(result) {
-  // if (result.query.pages[-1] !== undefined) {
-  //   render an error because the page doesn't exist
-  // }
+
   let pageKey = Object.keys(result.query.pages)[0];
   document.getElementById('searchedTitle').innerHTML = result.query.pages[pageKey].title;
   document.getElementById('searchedIntroText').innerHTML = result.query.pages[pageKey].extract || "";

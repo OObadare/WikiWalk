@@ -39,7 +39,7 @@ async function fillList() {
   var searchList = [firstLink];
   const listBuildingCall = async (searchTerm) => {
     let search = searchTerm;
-    while (searchList[searchList.length-1] !== "reality") {
+    while (searchList[searchList.length-1] !== "semiotics") {
       let search = searchList[searchList.length-1];
       const data = await $.ajax({
         type: "GET",
@@ -51,7 +51,11 @@ async function fillList() {
       var resultData = parseWikitext(data);
       if (resultData === "err") {
         document.getElementById("loader").style.display = "none";
-        return error;
+        if (searchList.length > 5) {
+          return searchList;
+        } else {
+          return error;
+        }
       }
       searchList.push(parseWikitext(data));
     }
