@@ -144,12 +144,11 @@ document.addEventListener("DOMContentLoaded", async function(){
 });
 
 function displayArticle(result) {
-
-  let pageKey = Object.keys(result.query.pages)[0];
-  document.getElementById('searchedTitle').innerHTML = result.query.pages[pageKey].title;
-  document.getElementById('searchedIntroText').innerHTML = result.query.pages[pageKey].extract || "";
+  debugger
+  document.getElementById('searchedTitle').innerHTML = result.title;
+  document.getElementById('searchedIntroText').innerHTML = result.intro || "";
   document.getElementById('searchedLink').href = "";
-  let wikiLeak = `https://en.wikipedia.org/wiki/${result.query.pages[pageKey].title}`;
+  let wikiLeak = `https://en.wikipedia.org/wiki/${result.title}`;
   document.getElementById('searchedLink').href = wikiLeak;
 }
 

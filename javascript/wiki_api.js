@@ -21,16 +21,25 @@ function makeCategoryUrl(dSearch){
   return `https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:${dSearch}`;
 }
 
-function getArticleIntro(searchTerm) {
-  $.ajax({
-    type: "GET",
-    url: `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=${searchTerm}&callback=?`,
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function (data) {
-      displayArticle(data);
-    },
+async function getArticleIntro(searchTerm) {
+  // $.ajax({
+  //   type: "GET",
+  //   url: `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=${searchTerm}&callback=?`,
+  //   contentType: "application/json; charset=utf-8",
+  //   dataType: "json",
+  //   success: function (data) {
+  //     displayArticle(data);
+  //   },
+  // });
+  var introduction = "";
+  var doc = await wtf.fetch(searchTerm);
+  /* Intro sentences: doc.data.sections[0].sentences(.text) */
+  doc.data.sections[0].data.sentences.forEach((sentenceObject) => {
+
+    introduction = introduction.concat(sentenceObject.text);
   });
+  var resultObject = {title: doc.options.title, intro: introduction};
+  displayArticle(resultObject);
 }
 
 /* jshint ignore:start */
