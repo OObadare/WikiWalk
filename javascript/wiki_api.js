@@ -31,13 +31,16 @@ async function getArticleIntro(searchTerm) {
   //     displayArticle(data);
   //   },
   // });
-  var introduction = "";
+  // var introduction = "";
   var doc = await wtf.fetch(searchTerm);
-  /* Intro sentences: doc.data.sections[0].sentences(.text) */
-  doc.data.sections[0].data.sentences.forEach((sentenceObject) => {
-
-    introduction = introduction.concat(sentenceObject.text);
-  });
+  // debugger
+  // /* Intro sentences: doc.data.sections[0].sentences(.text) */
+  // doc.data.sections[0].data.sentences.forEach((sentenceObject) => {
+  //
+  //   introduction = introduction.concat(sentenceObject.text);
+  // });
+  var introduction = doc.sections()[0].plaintext();
+  debugger
   var resultObject = {title: doc.options.title, intro: introduction};
   displayArticle(resultObject);
 }
@@ -77,17 +80,31 @@ async function fillList() {
 //I know this is dirty and confusing, but the jshint errors are way more dirty and confusing(not to mention annoying)
 
 async function getArticleWikitext(searchTerm) {
-  await $.ajax({
-    type: "GET",
-    url: `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${searchTerm}&callback=?`,
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function (data) {
-      searchedWikiLinks.push (parseWikitext(data));
-    },
-    error: function (errorMessage) {
+  // await $.ajax({
+  //   type: "GET",
+  //   url: `https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=${searchTerm}&callback=?`,
+  //   contentType: "application/json; charset=utf-8",
+  //   dataType: "json",
+  //   success: function (data) {
+  //     searchedWikiLinks.push (parseWikitext(data));
+  //   },
+  //   error: function (errorMessage) {
+  //   }
+  // });
+
+  var doc = await wtf.fetch(searchTerm);
+  var firstLink;
+  debugger
+  /* look through sentence [i] until sentence actually has a link somewhere */
+  doc.data.sections[0].data.sentences.some((sentence) => {
+    if (typeof(sentence.links) !== "undefined") {
+      firstLink = sentence.links[0].text;
+      return firstLink;
     }
   });
+  firstLink = doc.links()[0].page;
+  searchedWikiLinks.push(firstLink);
+  // var firstLink = doc.data.sections[0].data.sentences[0].links[0].text;
 }
 
 function getArticleViews(dSearch, startDate, endDate) {

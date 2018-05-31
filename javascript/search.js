@@ -144,7 +144,6 @@ document.addEventListener("DOMContentLoaded", async function(){
 });
 
 function displayArticle(result) {
-  debugger
   document.getElementById('searchedTitle').innerHTML = result.title;
   document.getElementById('searchedIntroText').innerHTML = result.intro || "";
   document.getElementById('searchedLink').href = "";
